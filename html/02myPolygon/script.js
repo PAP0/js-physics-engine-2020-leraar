@@ -17,5 +17,5 @@ for(let i =0; i<3; i++){
   points.push(myPoint);
 }
 
-let myPolygon = new Poygon(points);
+let myPolygon = new Polygon(points);
 myPolygon.draw(context);
