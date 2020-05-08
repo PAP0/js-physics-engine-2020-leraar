@@ -1,16 +1,4 @@
-/*
-	4-3-2020
-	klasse om punten op polygonen mee vast te leggen en te tekenen
-
-	eigenschappen
-	* points (array van points)
-
-  methodes
-  * draw
-*/
-
-
-class Poygon{
+class Polygon{
   constructor(points){
     this.points = points;
   }

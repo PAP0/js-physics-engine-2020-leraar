@@ -9,7 +9,6 @@
 */
 
 class Point {
-
   constructor(x,y,radius,color,draggable){
     this.x = x;
     this.y = y;
@@ -22,60 +21,58 @@ class Point {
       }
     }
 
-    get vPos(){
-      return new Vector2d(this.x,this.y);
-    }
-
-    set vPos(vector){
-      this.x = vector.dx;
-      this.y = vector.dy;
-    }
-
     drag(){
-
-      let mouse = {};
+      let mouseCoord ={};
       let distance;
       let dragging = false;
-
+    
       addEventListener('mousedown',(evt) => {
-        mouse.x = evt.clientX;
-        mouse.y = evt.clientY;
-
-        let dx = this.x - mouse.x;
-        let dy = this.y - mouse.y;
+        mouseCoord.x = evt.clientX;
+        mouseCoord.y = evt.clientY;
+    
+        let dx = mouseCoord.x - this.x;
+        let dy = mouseCoord.y - this.y;
+    
         distance = Math.sqrt(dx*dx + dy*dy);
-
         if(distance < this.radius){
-          dragging = true;
+          dragging = true
         } else {
-          dragging = false;
+          dragging = false
         }
-
-      })
-
-      addEventListener('mousemove',(evt)=>{
+      });
+    
+      addEventListener('mousemove',(evt) => {
         if(dragging){
           this.x = evt.clientX;
           this.y = evt.clientY;
         }
-      })
-
-      addEventListener('mouseup',() =>{
+      });
+    
+      addEventListener('mouseup',() => {
         dragging = false;
-      })
+      });
+    
     }
+    
+    // this.font = "12px Courier new";
+    // this.text = text;
+  
 
-  draw(){
-    context.beginPath();
-    context.fillStyle = this.color;
-    context.arc(this.x,this.y,this.radius,0,Math.PI*2);
-    context.stroke();
-    context.fill();
+    draw(){
+      context.beginPath();
+      context.fillStyle = this.color;
+      context.arc(this.x,this.y,this.radius,0,Math.PI*2);
+      context.stroke();
+      context.fill();
+    }
+  
+    printText(){
+      context.font = this.font;
+      context.fillText(this.text, this.x, this.y - this.radius - 10);
+    }
+  
+  
+
   }
 
-  printText(){
-    context.font = this.font;
-    context.fillText(this.text, this.x, this.y - this.radius - 10);
-  }
 
-}
