@@ -7,53 +7,30 @@ const height = window.innerHeight;
 canvas.width = width;
 canvas.height = height;
 
-let time,clockFace,hoursHand,minutesHand,secondHand;
+let img_highres,img_lowres,scale,point,coordinate;
 
-let seconds,minutes,hours;
+img_lowres = new Image();
+img_lowres.src = "images/map_lowres.jpg";
 
-clockFace = new Image();
-clockFace.src =  "images/clockFace.png"
+img_highres = new Image();
+img_highres.src = "images/map_highres.jpg";
 
+scale = img_highres.width / img_lowres.width;
+coordinate = {};
 
-hoursHand = new Image();
-hoursHand.src =  "images/hoursHand.png"
+point = new Point(400,100,100,"black",true)
 
-
-minutesHand = new Image();
-minutesHand.src =  "images/minutesHand.png"
-
-
-secondHand = new Image();
-secondHand.src =  "images/secondHand.png"
-
-setInterval(animate,10);
-
+setInterval(animate,10)
 
 function animate(){
-  time = new Date();
-  seconds = time.getSeconds();
-  minutes = time.getMinutes();
-  hours = time.getHours();
-  console.log(seconds)
-
+  coordinate.x = point.x - point.radius;
+  coordinate.y = point.y - point.radius;
   context.clearRect(0,0,width,height);
-  context.drawImage(clockFace,0,0);
+  //context.drawImage(img_highres,400,400,200,200,500,300,200,200);
+  context.drawImage(img_lowres,0,0);
 
-  context.save();
-  context.translate(clockFace.width/2,clockFace.height/2);
-  context.rotate(seconds*2*Math.PI/60);
-  context.drawImage(secondHand,-secondHand.width/2,-secondHand.height);
-  context.restore();
+  context.fillRect(coordinate.x-5,coordinate.y-5,2*point.radius+10,2*point.radius+10);
+  context.drawImage(img_highres,coordinate.x,coordinate.y,200,200,coordinate.x,coordinate.y,2*point.radius,2*point.radius);
+  //point.draw();
 
-  context.save();
-  context.translate(clockFace.width/2,clockFace.height/2);
-  context.rotate(minutes*2*Math.PI/60);
-  context.drawImage(minutesHand,-minutesHand.width/2,-minutesHand.height);
-  context.restore();
-
-  context.save();
-  context.translate(clockFace.width/2,clockFace.height/2);
-  context.rotate(hours*2*Math.PI/12);
-  context.drawImage(hoursHand,-hoursHand.width/2,-hoursHand.height);
-  context.restore();
 }
