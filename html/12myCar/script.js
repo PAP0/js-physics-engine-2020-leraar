@@ -23,7 +23,7 @@ wheel.backAngle = 0;
 addEventListener('keydown',(e)=>{
   switch(e.key) {
     case "ArrowRight":
-      car.speed += 1.5;
+      car.speed += 0.5;
       break;
     case "ArrowLeft":
       car.speed -= 0.5;
