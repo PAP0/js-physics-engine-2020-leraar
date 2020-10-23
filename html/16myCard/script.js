@@ -20,8 +20,6 @@ numberOnAColumn = 5;
 index = Math.floor(Math.random()*52);3
 card_2 = Math.floor(Math.random()*52);
 card_3 = Math.floor(Math.random()*52);
-card_4 = Math.floor(Math.random()*52);
-card_5 = Math.floor(Math.random()*52);
 
 image.addEventListener('load',()=>{
   sw = image.width/numberOnARow;

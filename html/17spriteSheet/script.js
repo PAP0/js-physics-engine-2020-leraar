@@ -15,22 +15,22 @@ let xspeed;
 
 
 runningCat = new Image()
-runningCat.src = "images/runningcat.png";
-index = 0;
-xspeed = 50;
+runningCat.src = "images/spritesheet.png";
+index = 2;
+xspeed = 5;
 
 runningCat.addEventListener('load',()=>{
-  sw = runningCat.width/2;
-  sh = runningCat.height/4;
-  x = 100;
-  y = 100;
+  sw = runningCat.width/12;
+  sh = runningCat.height/6.4;
+  x = 200;
+  y = 200;
 
-  setInterval(animate,75)
+  setInterval(animate,200)
 })
 
 function animate(){
   sx = index%2 * sw;
-  sy = Math.floor(index/2) * sh;
+  sy = Math.floor(index/1) * sh;
 
   w = sw;
   h = sh;

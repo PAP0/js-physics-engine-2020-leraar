@@ -23,18 +23,22 @@ dice.image.addEventListener('load',()=>{
     sw = dice.image.width/6;
     sh = dice.image.height;
 
-    setInterval(animate,500);
+    setInterval(animate,300);
 })
 
 function animate(){
     roll_1 = Math.floor(Math.random()*6)+1;
     roll_2 = Math.floor(Math.random()*6)+1;
+    roll_3 = Math.floor(Math.random()*6)+1;
+    roll_4 = Math.floor(Math.random()*6)+1;
 
 
     score = roll_1 + roll_2;
 
-    context.drawImage(dice.image,(roll_1-1)*sw,0,sw,sh,200,200,sw,sh);
-    context.drawImage(dice.image,(roll_2-1)*sw,0,sw,sh,400,200,sw,sh);
+    context.drawImage(dice.image,(roll_1-1)*sw,0,sw,sh,400,200,sw,sh);
+    context.drawImage(dice.image,(roll_2-1)*sw,0,sw,sh,600,200,sw,sh);
+    context.drawImage(dice.image,(roll_3-1)*sw,0,sw,sh,400,400,sw,sh);
+    context.drawImage(dice.image,(roll_4-1)*sw,0,sw,sh,600,400,sw,sh);
 
 
     scoreList[score-2]++
